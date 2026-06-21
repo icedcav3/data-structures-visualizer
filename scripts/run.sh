@@ -1,5 +1,15 @@
 #!/bin/bash
-# Script to run the application on Linux/macOS
+# Linux/macOS
+set -e
 
-cd "$(dirname "$0")"/.. || exit
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "$SCRIPT_DIR/.."
+
+echo "Starting Data Structures Visualizer..."
 python src/main.py
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to run the application."
+    echo "Make sure Python is installed and accessible."
+    exit 1
+fi
